@@ -5,15 +5,15 @@ public class Task {
     private final int id;
     private final Status status;
     private final String description;
-    private final String designlink;
+    private final String designLink;
     private final String testCase;
     private final String buildLink;
 
-    public Task(int id, Status status, String description, String designlink, String testCase, String buildLink) {
+    public Task(int id, Status status, String description, String designLink, String testCase, String buildLink) {
         this.id = id;
         this.status = status;
         this.description = description;
-        this.designlink = designlink;
+        this.designLink = designLink;
         this.testCase = testCase;
         this.buildLink = buildLink;
     }
