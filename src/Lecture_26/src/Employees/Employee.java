@@ -1,4 +1,7 @@
-package Lecture_26.src;
+package Lecture_26.src.Employees;
+
+import Lecture_26.src.Task;
+import Lecture_26.src.TaskProgressCallback;
 
 public abstract class Employee {
 
@@ -21,7 +24,7 @@ public abstract class Employee {
 
     protected abstract String getDetails(Task task);
 
-    protected abstract Task.Status getTaskWhenDone(Task task);
+    protected abstract Task getTaskWhenDone(Task task);
 
 
 }

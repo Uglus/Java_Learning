@@ -1,7 +1,7 @@
 package Lecture_26.src;
 
-public class TaskProgressCallback {
+public interface TaskProgressCallback {
 
-    public void updateTask(Task.Status taskWhenDone) {
-    }
+    void updateTask(Task taskWhenDone);
+
 }

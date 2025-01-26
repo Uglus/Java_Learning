@@ -18,7 +18,31 @@ public class Task {
         this.buildLink = buildLink;
     }
 
-    enum Status {
+    public int getId() {
+        return id;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDesignLink() {
+        return designLink;
+    }
+
+    public String getTestCase() {
+        return testCase;
+    }
+
+    public String getBuildLink() {
+        return buildLink;
+    }
+
+    public enum Status {
         ASSEMBLING_REQUIREMENTS,
         READY_TO_DO,
         IN_PROGRESS,
