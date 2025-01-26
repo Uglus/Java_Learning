@@ -5,7 +5,7 @@ import Lecture_26.src.TaskProgressCallback;
 
 public class Designer extends Employee{
 
-    protected Designer(TaskProgressCallback callback, String name) {
+    public Designer(TaskProgressCallback callback, String name) {
         super(callback, name, Task.Status.ASSEMBLING_REQUIREMENTS);
     }
 

@@ -26,5 +26,8 @@ public abstract class Employee {
 
     protected abstract Task getTaskWhenDone(Task task);
 
+    public Task.Status getTaskStatus() {
+        return taskStatus;
+    }
 
 }

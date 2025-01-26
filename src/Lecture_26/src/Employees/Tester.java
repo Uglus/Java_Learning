@@ -5,7 +5,7 @@ import Lecture_26.src.TaskProgressCallback;
 
 public class Tester extends Employee {
 
-    protected Tester(TaskProgressCallback callback, String name) {
+    public Tester(TaskProgressCallback callback, String name) {
         super(callback, name, Task.Status.READY_FOR_TESTING);
     }
 

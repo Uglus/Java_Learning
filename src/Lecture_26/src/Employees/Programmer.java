@@ -4,7 +4,7 @@ import Lecture_26.src.Task;
 import Lecture_26.src.TaskProgressCallback;
 
 public class Programmer extends Employee {
-    protected Programmer(TaskProgressCallback callback, String name) {
+    public Programmer(TaskProgressCallback callback, String name) {
         super(callback, name, Task.Status.READY_TO_DO);
     }
 
