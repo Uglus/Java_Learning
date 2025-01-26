@@ -19,13 +19,16 @@ public class Lecture26 extends Lecture {
             }
         };
 
-        EmployeeChain chain = new EmployeeChain(new Designer(callback, "Designer_name"));
-        EmployeeChain next = new EmployeeChain(new Programmer(callback, "Programmer_name"));
-        EmployeeChain last = new EmployeeChain(new Tester(callback, "Tester_name"));
-        next.setNextEmployee(last);
-        chain.setNextEmployee(next);
+        EmployeeChain chain = new EmployeeChain(
+                new EmployeeChain(
+                        new Designer(callback, "Designer_name"),
+                        new Programmer(callback, "Programmer_name")
+                ),
+                new Tester(callback, "Tester_name")
+        );
 
         while (true)
-            chain.doTask(factory.getTask());
+            if(!chain.doTask(factory.getTask()))
+                break;
     }
 }

@@ -2,27 +2,24 @@ package Lecture_26.src;
 
 import Lecture_26.src.Employees.Employee;
 
-public class EmployeeChain {
+public class EmployeeChain implements TaskHandler{
 
-    private final Employee employee;
-    private EmployeeChain nextEmployeeChain;
+    private final TaskHandler first;
+    private final TaskHandler second;
 
 
-    public EmployeeChain(Employee employee) {
-        this.employee = employee;
+    public EmployeeChain(TaskHandler first,
+                         TaskHandler second) {
+        this.first = first;
+        this.second = second;
     }
 
-    public void doTask(Task task) {
-        if(task.getStatus() == employee.getTaskStatus()) {
-            employee.doTask(task);
-        } else if(nextEmployeeChain != null) {
-            nextEmployeeChain.doTask(task);
-        } else {
-            throw new IllegalArgumentException("task can`t be handled");
-        }
-    }
-
-    public void setNextEmployee(EmployeeChain nextEmployeeChain) {
-        this.nextEmployeeChain = nextEmployeeChain;
+    @Override
+    public boolean doTask(Task task) {
+        boolean result = false;
+        result = first.doTask(task);
+        if(!result)
+            result = second.doTask(task);
+        return result;
     }
 }
