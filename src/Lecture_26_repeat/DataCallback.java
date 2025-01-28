@@ -1,12 +1,12 @@
 package Lecture_26_repeat;
 
-public interface DataCallback {
+public interface DataCallback<T extends Success,E extends Failure> {
 
-    void returnSuccess(DataContainer dataContainer);
+    void returnSuccess(T dataContainer);
 
-    void returnError(ErrorInfo errorInfo);
+    void returnError(E errorInfo);
 
-    class Base implements DataCallback{
+    class Base implements DataCallback<DataContainer,ErrorInfo>{
         private final Log log;
 
         public Base(Log log) {
@@ -24,3 +24,7 @@ public interface DataCallback {
         }
     }
 }
+
+interface Success{}
+
+interface Failure{}

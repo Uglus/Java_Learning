@@ -1,6 +1,6 @@
 package Lecture_26_repeat;
 
-public class ErrorInfo {
+public class ErrorInfo implements Failure{
     private final String errorMessage;
     private final String causeMessage;
 
