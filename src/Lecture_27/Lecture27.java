@@ -22,6 +22,7 @@ public class Lecture27 extends Lecture {
             print("i " + i + " item " + list.get(i));
         }
 
+
         print(list.contains("first"));
 
     }
