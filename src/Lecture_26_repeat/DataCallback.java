@@ -1,6 +1,6 @@
 package Lecture_26_repeat;
 
-public interface DataCallback<T extends Success,E extends Failure> {
+public interface DataCallback<T extends Successful,E extends Failure> {
 
     void returnSuccess(T dataContainer);
 
@@ -25,6 +25,6 @@ public interface DataCallback<T extends Success,E extends Failure> {
     }
 }
 
-interface Success{}
+interface Successful {}
 
 interface Failure{}

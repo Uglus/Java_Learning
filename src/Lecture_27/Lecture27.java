@@ -8,7 +8,7 @@ import java.util.List;
 public class Lecture27 extends Lecture {
 
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         print(list.isEmpty());
         list.add("first");
         list.add("second");

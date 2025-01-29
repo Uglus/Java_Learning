@@ -18,7 +18,7 @@ public abstract class Employee implements TaskHandler {
     }
 
     public boolean doTask(Task task) {
-        boolean canHandle = taskStatus == task.getStatus();
+        boolean canHandle = canHandleTask(task);
         if(canHandle) {
             System.out.println(getClass().getSimpleName() + " " + name +
                     " is doing task " + getDetails(task));
