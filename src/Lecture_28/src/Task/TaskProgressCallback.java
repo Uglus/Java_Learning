@@ -4,7 +4,7 @@ import Lecture_28.src.TaskFactory;
 
 public interface TaskProgressCallback {
 
-    public void updateTask(Task task);
+    public void updateTask(Task oldTask, Task newTask);
 
     class Base implements TaskProgressCallback{
         private final TaskFactory factory;
@@ -14,8 +14,8 @@ public interface TaskProgressCallback {
         }
 
         @Override
-        public void updateTask(Task task) {
-            factory.updateTask(task);
+        public void updateTask(Task oldTask, Task newTask) {
+            factory.updateTask(oldTask,newTask);
         }
     }
 

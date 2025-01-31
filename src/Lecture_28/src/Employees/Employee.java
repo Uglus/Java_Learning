@@ -1,10 +1,11 @@
 package Lecture_28.src.Employees;
 
+import Lecture_28.src.Observer;
+import Lecture_28.src.Task.Column;
 import Lecture_28.src.Task.Task;
-import Lecture_28.src.Task.TaskHandler;
 import Lecture_28.src.Task.TaskProgressCallback;
 
-public abstract class Employee implements TaskHandler {
+public abstract class Employee implements Observer {
     private final TaskProgressCallback callback;
     private final String name;
     private final Task.Status taskStatus;
@@ -16,26 +17,19 @@ public abstract class Employee implements TaskHandler {
         this.taskStatus = taskStatus;
     }
 
-    public boolean doTask(Task task) {
-        boolean canHandle = canHandleTask(task);
-        if(canHandle) {
-            System.out.println(getClass().getSimpleName() + " " +
-                    name + " is doing task " + getDetails(task));
-            callback.updateTask(getTaskWhenDone(task));
-        }
-        return canHandle;
+    @Override
+    public void handleTask(Task task) {
+        /*System.out.println(getClass().getSimpleName() + " " +
+                name + " is doing task " + getDetails(task));*/
+        callback.updateTask(task,getTaskWhenDone(task));
     }
 
-    public Task.Status getTaskStatus(){
-        return taskStatus;
+    public final boolean canBeObserverForColumn(Column column) {
+        return column.isTaskBelongToColumn(taskStatus);
     }
 
-    private boolean canHandleTask(Task task) {
-        return taskStatus == task.getStatus();
-    }
+    protected abstract Task getTaskWhenDone(Task task);
 
-    protected abstract Task getTaskWhenDone(Task task) ;
-
-    protected abstract String getDetails(Task task) ;
+    protected abstract String getDetails(Task task);
 
 }
