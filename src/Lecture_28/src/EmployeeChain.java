@@ -2,29 +2,23 @@ package Lecture_28.src;
 
 import Lecture_28.src.Employees.Employee;
 import Lecture_28.src.Task.Task;
+import Lecture_28.src.Task.TaskHandler;
 
-public class EmployeeChain {
-    private final Employee employee;
-    private EmployeeChain nextEmployeeChain;
+public class EmployeeChain implements TaskHandler {
+    private final TaskHandler first;
+    private final TaskHandler second;
 
 
-    public EmployeeChain(Employee employee) {
-        this.employee = employee;
+    public EmployeeChain(TaskHandler first, TaskHandler second) {
+        this.first = first;
+        this.second = second;
     }
 
+    @Override
     public boolean doTask(Task task) {
-        boolean result = false;
-        if(employee.canHandleTask(task)){
-            employee.doTask(task);
-            result = true;
-        }
-        else if (nextEmployeeChain != null) {
-            result = nextEmployeeChain.doTask(task);
-        }
+        boolean result = first.doTask(task);
+        if(!result)
+            result = second.doTask(task);
         return result;
-    }
-
-    public void setNextEmployeeChain(EmployeeChain nextEmployeeChain) {
-        this.nextEmployeeChain = nextEmployeeChain;
     }
 }

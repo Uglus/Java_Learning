@@ -14,11 +14,12 @@ public class Lecture28 extends Lecture {
         TaskFactory factory = new TaskFactory();
         TaskProgressCallback taskProgressCallback = new TaskProgressCallback.Base(factory);
 
-        EmployeeChain chain = new EmployeeChain(new Designer(taskProgressCallback, "Name_Designer"));
-        EmployeeChain next = new EmployeeChain(new Programmer(taskProgressCallback, "Programmer_Name"));
-        EmployeeChain last = new EmployeeChain(new Tester(taskProgressCallback, "Tester_Name"));
-        chain.setNextEmployeeChain(next);
-        next.setNextEmployeeChain(last);
+        EmployeeChain chain = new EmployeeChain(
+                new EmployeeChain(
+                        new Designer(taskProgressCallback, "Name_Designer"),
+                        new Programmer(taskProgressCallback, "Programmer_Name")),
+                new Tester(taskProgressCallback, "Tester_Name")
+        );
 
         while (true) {
             if (!chain.doTask(factory.getNotFinishedTask()))

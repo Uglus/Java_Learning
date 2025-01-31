@@ -1,9 +1,10 @@
 package Lecture_28.src.Employees;
 
 import Lecture_28.src.Task.Task;
+import Lecture_28.src.Task.TaskHandler;
 import Lecture_28.src.Task.TaskProgressCallback;
 
-public abstract class Employee {
+public abstract class Employee implements TaskHandler {
     private final TaskProgressCallback callback;
     private final String name;
     private final Task.Status taskStatus;
@@ -15,17 +16,21 @@ public abstract class Employee {
         this.taskStatus = taskStatus;
     }
 
-    public void doTask(Task task) {
-        System.out.println(getClass().getSimpleName() + " " +
-                name + " is doing task " + getDetails(task));
-        callback.updateTask(getTaskWhenDone(task));
+    public boolean doTask(Task task) {
+        boolean canHandle = canHandleTask(task);
+        if(canHandle) {
+            System.out.println(getClass().getSimpleName() + " " +
+                    name + " is doing task " + getDetails(task));
+            callback.updateTask(getTaskWhenDone(task));
+        }
+        return canHandle;
     }
 
     public Task.Status getTaskStatus(){
         return taskStatus;
     }
 
-    public boolean canHandleTask(Task task) {
+    private boolean canHandleTask(Task task) {
         return taskStatus == task.getStatus();
     }
 
