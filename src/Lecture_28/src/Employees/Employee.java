@@ -25,6 +25,10 @@ public abstract class Employee {
         return taskStatus;
     }
 
+    public boolean canHandleTask(Task task) {
+        return taskStatus == task.getStatus();
+    }
+
     protected abstract Task getTaskWhenDone(Task task) ;
 
     protected abstract String getDetails(Task task) ;

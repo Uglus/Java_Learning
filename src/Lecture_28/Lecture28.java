@@ -20,8 +20,9 @@ public class Lecture28 extends Lecture {
         chain.setNextEmployeeChain(next);
         next.setNextEmployeeChain(last);
 
-        while (true){
-            chain.doTask(factory.getNotFinishedTask());
+        while (true) {
+            if (!chain.doTask(factory.getNotFinishedTask()))
+                break;
         }
 
     }
