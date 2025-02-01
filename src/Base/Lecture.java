@@ -1,6 +1,6 @@
 package Base;
 
-public class Lecture {
+public abstract class Lecture {
 
     public static void print(Object object) {
         System.out.println(object);
